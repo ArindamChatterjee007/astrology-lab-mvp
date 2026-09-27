@@ -71,3 +71,19 @@ astronomy-engine/esm/astronomy.js:
    * @author Don Cross <cosinekitty@gmail.com>
    * @license MIT
    */
+
+astronomia/src/base.js:
+  /**
+   * @copyright 2013 Sonia Keys
+   * @copyright 2016 commenthol
+   * @license MIT
+   * @module base
+   */
+
+astronomia/src/moonposition.js:
+  /**
+   * @copyright 2013 Sonia Keys
+   * @copyright 2016 commenthol
+   * @license MIT
+   * @module moonposition
+   */
