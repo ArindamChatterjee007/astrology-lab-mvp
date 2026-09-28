@@ -62,6 +62,8 @@ lucide/dist/esm/icons/arrow-up-right.mjs:
 lucide/dist/esm/icons/arrow-up.mjs:
 lucide/dist/esm/icons/book-open.mjs:
 lucide/dist/esm/icons/bookmark-plus.mjs:
+lucide/dist/esm/icons/chevron-right.mjs:
+lucide/dist/esm/icons/chevron-left.mjs:
 lucide/dist/esm/icons/circle-dot.mjs:
 lucide/dist/esm/icons/download.mjs:
 lucide/dist/esm/icons/flask-conical.mjs:
@@ -72,6 +74,7 @@ lucide/dist/esm/icons/moon.mjs:
 lucide/dist/esm/icons/notebook-pen.mjs:
 lucide/dist/esm/icons/orbit.mjs:
 lucide/dist/esm/icons/printer.mjs:
+lucide/dist/esm/icons/rotate-ccw.mjs:
 lucide/dist/esm/icons/shield-check.mjs:
 lucide/dist/esm/icons/shuffle.mjs:
 lucide/dist/esm/icons/sliders-horizontal.mjs:
@@ -79,6 +82,7 @@ lucide/dist/esm/icons/sparkles.mjs:
 lucide/dist/esm/icons/sun-medium.mjs:
 lucide/dist/esm/icons/sun.mjs:
 lucide/dist/esm/icons/trash.mjs:
+lucide/dist/esm/icons/users.mjs:
 lucide/dist/esm/icons/x.mjs:
 lucide/dist/esm/lucide.mjs:
   /**
