@@ -79,7 +79,9 @@ lucide/dist/esm/icons/clock.mjs:
 lucide/dist/esm/icons/copy.mjs:
 lucide/dist/esm/icons/credit-card.mjs:
 lucide/dist/esm/icons/download.mjs:
+lucide/dist/esm/icons/flame.mjs:
 lucide/dist/esm/icons/flask-conical.mjs:
+lucide/dist/esm/icons/heart-handshake.mjs:
 lucide/dist/esm/icons/layers.mjs:
 lucide/dist/esm/icons/leaf.mjs:
 lucide/dist/esm/icons/messages-square.mjs:
