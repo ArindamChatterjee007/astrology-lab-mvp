@@ -1,0 +1,93 @@
+name: Cloud verification
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact approved source commit
+        required: true
+        type: string
+      mode:
+        description: Verification scope
+        type: choice
+        default: focused
+        options: [focused, full, live]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cloud-verification
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.event_name == 'workflow_dispatch' && github.actor == github.repository_owner
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Validate source reference
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: '[[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]]'
+      - name: Check out publication repository
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+          path: publication
+      - name: Read approved source privately
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          repository: ${{ secrets.ASTRO_SOURCE_REPOSITORY }}
+          ref: ${{ inputs.source_sha }}
+          ssh-key: ${{ secrets.ASTRO_SOURCE_READ_KEY }}
+          persist-credentials: false
+          path: source
+          fetch-depth: 1
+      - name: Set up Node
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
+        with:
+          node-version: 22
+      - name: Run private checks
+        id: checks
+        continue-on-error: true
+        working-directory: source
+        env:
+          CLOUD_SOURCE_SHA: ${{ inputs.source_sha }}
+          CLOUD_CHECK_MODE: ${{ inputs.mode }}
+        run: node scripts/cloud-check.mjs
+      - name: Encrypt result bundle
+        if: always() && steps.checks.outcome != 'skipped'
+        env:
+          RESULT_KEY: ${{ secrets.ASTRO_RESULT_KEY }}
+        run: |
+          node --input-type=module <<'NODE'
+          import {execFileSync} from 'node:child_process';
+          import {readFileSync,writeFileSync,mkdirSync,existsSync} from 'node:fs';
+          import {createCipheriv,randomBytes} from 'node:crypto';
+          const key=Buffer.from(process.env.RESULT_KEY.trim(),'base64');
+          if(key.length!==32)throw new Error('Result encryption is not configured.');
+          const paths=['artifacts/cloud-run'];
+          if(existsSync('source/dist/public/index.html'))paths.push('dist/public');
+          const archive=execFileSync('tar',['-czf','-','-C','source',...paths],{maxBuffer:60000000});
+          const nonce=randomBytes(12);
+          const cipher=createCipheriv('aes-256-gcm',key,nonce);
+          const encrypted=Buffer.concat([cipher.update(archive),cipher.final()]);
+          mkdirSync('publication/cloud-results',{recursive:true});
+          writeFileSync(`publication/cloud-results/${process.env.GITHUB_RUN_ID}.enc`,Buffer.concat([nonce,cipher.getAuthTag(),encrypted]));
+          NODE
+      - name: Return encrypted bundle without artifact charges
+        if: always() && steps.checks.outcome != 'skipped'
+        working-directory: publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config credential.helper '!gh auth git-credential'
+          git add -- cloud-results
+          git commit -m 'Return encrypted cloud verification result'
+          git push origin HEAD:main
+      - name: Require passing checks
+        if: steps.checks.outcome != 'success'
+        run: exit 1
