@@ -70,6 +70,7 @@ lucide/dist/esm/icons/book-open.mjs:
 lucide/dist/esm/icons/bookmark-plus.mjs:
 lucide/dist/esm/icons/chevron-right.mjs:
 lucide/dist/esm/icons/chevron-left.mjs:
+lucide/dist/esm/icons/circle-check.mjs:
 lucide/dist/esm/icons/circle-dot.mjs:
 lucide/dist/esm/icons/clock.mjs:
 lucide/dist/esm/icons/copy.mjs:
@@ -77,18 +78,24 @@ lucide/dist/esm/icons/credit-card.mjs:
 lucide/dist/esm/icons/download.mjs:
 lucide/dist/esm/icons/flame.mjs:
 lucide/dist/esm/icons/flask-conical.mjs:
+lucide/dist/esm/icons/focus.mjs:
+lucide/dist/esm/icons/hand.mjs:
 lucide/dist/esm/icons/heart-handshake.mjs:
+lucide/dist/esm/icons/image-plus.mjs:
 lucide/dist/esm/icons/layers.mjs:
 lucide/dist/esm/icons/leaf.mjs:
+lucide/dist/esm/icons/lock-keyhole.mjs:
 lucide/dist/esm/icons/messages-square.mjs:
 lucide/dist/esm/icons/moon.mjs:
 lucide/dist/esm/icons/notebook-pen.mjs:
 lucide/dist/esm/icons/orbit.mjs:
 lucide/dist/esm/icons/plus.mjs:
 lucide/dist/esm/icons/printer.mjs:
+lucide/dist/esm/icons/refresh-cw.mjs:
 lucide/dist/esm/icons/rotate-ccw.mjs:
 lucide/dist/esm/icons/scroll-text.mjs:
 lucide/dist/esm/icons/search.mjs:
+lucide/dist/esm/icons/send.mjs:
 lucide/dist/esm/icons/shield-check.mjs:
 lucide/dist/esm/icons/shuffle.mjs:
 lucide/dist/esm/icons/sliders-horizontal.mjs:
@@ -97,7 +104,10 @@ lucide/dist/esm/icons/sun-medium.mjs:
 lucide/dist/esm/icons/sun.mjs:
 lucide/dist/esm/icons/trash.mjs:
 lucide/dist/esm/icons/users.mjs:
+lucide/dist/esm/icons/volume-2.mjs:
+lucide/dist/esm/icons/volume-x.mjs:
 lucide/dist/esm/icons/x.mjs:
+lucide/dist/esm/icons/zoom-in.mjs:
 lucide/dist/esm/lucide.mjs:
   /**
    * @license lucide v1.48.0 - ISC
