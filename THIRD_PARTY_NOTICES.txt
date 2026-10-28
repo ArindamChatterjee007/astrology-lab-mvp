@@ -283,6 +283,10 @@ Palm reference image: Right Hand Palm by Eyefive45, CC BY-SA 4.0. Source: https:
 
 --------------------
 
+Celestial imagery: Saturn Taken from Voyager 2, PIA01364, NASA/JPL; Earth Blue Marble, PIA18033, NASA. Sources: https://images.nasa.gov/details/PIA01364 and https://images.nasa.gov/details/PIA18033 . Small images converted to WebP and composited as decorative artwork, not a live sky or calculated birth chart. Reuse subject to NASA Media Usage Guidelines: https://www.nasa.gov/nasa-brand-center/images-and-media/ . No NASA endorsement is claimed; no NASA logo is used.
+
+--------------------
+
 Noto Sans report font / OFL-1.1
 Source: notofonts/noto-fonts commit ffebf8c1ee449e544955a7e813c54f9b73848eac
 SHA-256: 2118e60a3c88075064261fd7ba82c973a01673d3eb44d58a8a983ae0b9a465ed
